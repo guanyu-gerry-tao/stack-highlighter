@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stack Highlighter</title>
+    <link rel="stylesheet" href="src/sidepanel.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <h1>Stack Highlighter</h1>
+          <p id="matchSummary">Ready to scan this page</p>
+        </div>
+        <div class="header-actions" aria-label="Highlight actions">
+          <button class="icon-button" id="enabledToggleButton" type="button" title="Disable highlights" aria-label="Disable highlights">
+            <span aria-hidden="true">⏻</span>
+          </button>
+          <button class="icon-button" id="refreshButton" type="button" title="Refresh highlights" aria-label="Refresh highlights">
+            <span aria-hidden="true">↻</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="search-wrap" aria-label="Search keywords">
+        <input id="searchInput" type="search" placeholder="Search or select text on page" autocomplete="off" />
+        <button id="clearSearchButton" class="icon-button muted" type="button" title="Clear search" aria-label="Clear search">
+          <span aria-hidden="true">×</span>
+        </button>
+      </section>
+
+      <section class="table-actions" aria-label="Keyword table actions">
+        <button id="viewJsonButton" type="button">View Json keywords</button>
+        <button id="exportJsonButton" type="button">Export json keywords</button>
+        <button id="importJsonButton" type="button">Import json keywords</button>
+        <input id="importJsonFileInput" class="hidden" type="file" accept="application/json,.json" />
+      </section>
+
+      <section id="jsonEditorPanel" class="json-editor-panel hidden" aria-label="Keyword JSON editor">
+        <textarea id="jsonTextarea" spellcheck="false" autocomplete="off"></textarea>
+        <p id="jsonError" class="json-error" aria-live="polite"></p>
+        <div class="json-editor-actions">
+          <button id="jsonSaveButton" type="button">Save</button>
+          <button id="jsonCloseButton" type="button">Close</button>
+        </div>
+      </section>
+
+      <section id="selectionBar" class="selection-bar hidden" aria-live="polite">
+        <div>
+          <span class="selection-label">Selected</span>
+          <strong id="selectionText"></strong>
+        </div>
+      </section>
+
+      <section id="categoryList" class="category-list" aria-label="Keyword categories"></section>
+
+      <section class="add-category-panel" aria-label="Add category">
+        <button id="addCategoryButton" class="add-category-button" type="button" title="Add category" aria-label="Add category">
+          <span aria-hidden="true">+</span>
+        </button>
+        <form id="addCategoryForm" class="add-category-form hidden">
+          <input id="categoryNameInput" type="text" placeholder="Category name" autocomplete="off" />
+          <input id="categoryColorInput" type="color" value="#14b8a6" title="Category color" aria-label="Category color" />
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section id="disabledOverlay" class="disabled-overlay hidden" aria-live="polite">
+        <div class="disabled-card">
+          <strong>Disabled</strong>
+          <button id="disabledEnableButton" type="button">Enable</button>
+        </div>
+      </section>
+    </main>
+
+    <template id="categoryTemplate">
+      <section class="category" data-category-id="">
+        <div class="category-head">
+          <div class="category-order-controls" aria-label="Move category">
+            <button class="category-order-button category-move-up-button" data-role="categoryMoveUpButton" type="button" title="Move category up" aria-label="Move category up">
+              <span aria-hidden="true">↑</span>
+            </button>
+            <button class="category-order-button category-move-down-button" data-role="categoryMoveDownButton" type="button" title="Move category down" aria-label="Move category down">
+              <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+          <button class="category-toggle" type="button">
+            <span class="category-title-wrap">
+              <span class="category-dot"></span>
+              <h2></h2>
+              <span class="category-count"></span>
+            </span>
+          </button>
+          <button class="selected-add-chip hidden" type="button" title="Add selected keyword" aria-label="Add selected keyword">
+            <span aria-hidden="true">+</span>
+          </button>
+          <button class="icon-button category-enabled-button" data-role="categoryEnabledButton" type="button" title="Disable category" aria-label="Disable category">
+            <span aria-hidden="true">💡</span>
+          </button>
+          <button class="icon-button delete-category-button" type="button" title="Delete category" aria-label="Delete category">
+            <span aria-hidden="true">−</span>
+          </button>
+        </div>
+        <form class="add-form hidden">
+          <input type="text" placeholder="New keyword" autocomplete="off" />
+          <button type="submit">Add</button>
+        </form>
+        <div class="chips" aria-label="Keywords"></div>
+      </section>
+    </template>
+
+    <template id="chipTemplate">
+      <button class="chip" type="button" draggable="true">
+        <span class="chip-label"></span>
+        <span class="chip-remove" aria-hidden="true">×</span>
+      </button>
+    </template>
+
+    <script src="src/shared.js"></script>
+    <script src="src/sidepanel.js"></script>
+  </body>
+</html>

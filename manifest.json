@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Stack Highlighter",
+  "description": "Highlight job-search keywords by category on the current page.",
+  "version": "0.2.1",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "sidePanel", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Open Stack Highlighter"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["src/content.css"],
+      "js": ["src/shared.js", "src/contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
