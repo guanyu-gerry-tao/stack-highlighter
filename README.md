@@ -1,8 +1,15 @@
 # Stack Highlighter
 
-Current version: `0.2.1`
-
 Stack Highlighter is a small unpacked Chrome extension for job-search reading. It highlights useful terms on the current page and lets you manage keyword bubbles from a right-side Chrome side panel.
+
+## Screenshots
+
+![Stack Highlighter side panel](assets/screenshots/side-panel.jpg)
+
+Additional Chrome Web Store screenshots can be placed in `assets/screenshots/`.
+
+- `assets/screenshots/page-highlights.png`: job page with highlighted keywords.
+- `assets/screenshots/json-editor.png`: JSON keyword import/export editor.
 
 ## What It Does
 
@@ -50,7 +57,11 @@ After changing local files, go back to `chrome://extensions` and click the reloa
 
 Stack Highlighter is local-first. Keyword data and enabled/disabled state are stored in Chrome extension storage. The extension does not send job-page text or keyword data to a server.
 
-The manifest uses broad page access so the content script can highlight keywords on arbitrary job pages. This project is intended for local unpacked use, not Chrome Web Store distribution.
+The manifest currently uses broad page access so the content script can highlight keywords on arbitrary job pages. For Chrome Web Store submission, consider narrowing this permission or using active-tab injection to reduce review friction.
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
 
 ## Development
 

@@ -369,6 +369,16 @@ textarea {
   color: color-mix(in srgb, var(--category-color) 58%, #4a514d);
 }
 
+.category-enabled-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
 .category-enabled-button.category-off {
   border-color: #d6dfda;
   color: #8b9690;
