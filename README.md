@@ -53,6 +53,46 @@ If the icon is hidden, open Chrome's extensions menu and pin `Stack Highlighter`
 
 After changing local files, go back to `chrome://extensions` and click the reload button on the Stack Highlighter card. Then refresh the job page so the content script reloads too.
 
+## How To Use
+
+### Enable Or Disable Highlighting
+
+Use the power button in the top-right corner of the side panel to enable or disable all highlighting. When disabled, existing highlights are removed from the current page and the panel shows a disabled overlay with an `Enable` button.
+
+### Add Keywords From A Page Selection
+
+Select up to five words on the page. The selected text appears near the top of the side panel. Each category header then shows a small green `+`; click the `+` next to the category where the selected keyword should be added.
+
+Selected keywords are cleaned before saving. Leading/trailing spaces and simple trailing punctuation are removed, and keywords are stored in lowercase.
+
+### Delete Keywords
+
+Hover over a keyword bubble and click the `x` on the bubble. The page refreshes its highlights after the keyword is removed.
+
+### View All Keywords In A Category
+
+Categories start collapsed. Click a category header to expand it and view all keywords in that category. Click the header again to collapse it back to the page-hit view.
+
+### Temporarily Disable A Category
+
+Click the lightbulb button on a category header to disable or enable that category. Disabled categories stay collapsed and do not highlight keywords on the page.
+
+### Backup Keywords
+
+Click `Export json keywords` to download the current keyword table as a JSON backup.
+
+### Restore Keywords
+
+Click `Import json keywords` and choose a previously exported JSON file. Invalid JSON or duplicate category names are rejected.
+
+### Advanced JSON Customization
+
+Click `View Json keywords` to edit the keyword table directly. The JSON format contains category `name`, `color`, `enabled`, and `keywords` fields. Click `Save` to validate and apply the edited JSON.
+
+### Add Or Delete Categories
+
+Category add/delete is available but still being tested. Use the large `+` at the bottom of the panel to add a category. Use the `−` button on a category header to delete a category; export a JSON backup first because category deletion cannot be undone.
+
 ## Privacy And Permissions
 
 Stack Highlighter is local-first. Keyword data and enabled/disabled state are stored in Chrome extension storage. The extension does not send job-page text or keyword data to a server.
