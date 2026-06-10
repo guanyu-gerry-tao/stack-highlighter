@@ -33,7 +33,7 @@ function assertExcludesAll(values, expected, label) {
 }
 
 assert.equal(manifest.manifest_version, 3);
-assert.equal(manifest.version, "0.2.2");
+assert.equal(manifest.version, "0.2.3");
 assert.equal(manifest.name, "Stack Highlighter");
 assert.ok(manifest.permissions.includes("storage"));
 assert.ok(manifest.permissions.includes("sidePanel"));

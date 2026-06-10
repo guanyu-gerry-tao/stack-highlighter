@@ -27,6 +27,11 @@
   /** DOM scanning configuration: what we create and what we must never scan. */
   const HIGHLIGHT_CLASS = "stack-highlighter-mark";
   const SKIP_SELECTOR = [
+    "a",
+    "button",
+    "h1",
+    "h2",
+    "h3",
     "script",
     "style",
     "textarea",
@@ -35,6 +40,8 @@
     "option",
     "code",
     "pre",
+    "[role='button']",
+    "[role='heading']",
     "[contenteditable='true']",
     `.${HIGHLIGHT_CLASS}`
   ].join(",");
